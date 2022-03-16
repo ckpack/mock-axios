@@ -1,10 +1,9 @@
 import type { Method, AxiosResponse, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
-
 export interface MockConfig {
-  method?: Method,
   url: string | RegExp,
+  method?: Method,
   adapter?: (axiosConfig: AxiosRequestConfig, mockConfig: MockConfig) => any,
   timeout?: number,
   response?: Partial<AxiosResponse>,
@@ -12,24 +11,24 @@ export interface MockConfig {
 
 export interface MockOptions {
   isUseDefaultAdapter: Boolean,
+  isEffect: Boolean,
 }
 
 const defaultAdapter = axios.defaults.adapter;
 const mockAdapter = (axiosConfig: AxiosRequestConfig, mockConfig: MockConfig)=> Promise.resolve(mockConfig.response);
 
-async function timeout(time = 300) {
+const timeout = async (time = 300) => {
   return new Promise((res)=>{
     setTimeout(()=>{
       res(time);
     }, time);
   });
-}
+};
 
-export const defineConfig = (config: MockConfig) => config;
-
-export default function mockAxios(mockDatas: MockConfig[], mockOptions?: MockOptions) {
-  const { isUseDefaultAdapter = true } = mockOptions || {};
+const mockAxios = (mockDatas: MockConfig[], mockOptions?: MockOptions) => {
+  const { isUseDefaultAdapter = true, isEffect = true } = mockOptions || {};
   axios.defaults.adapter = async (axiosConfig) => {
+    if (!isEffect && defaultAdapter) return defaultAdapter(axiosConfig);
     const mockConfig = mockDatas.find((mockData) => {
       const { url, method } = mockData;
       return ((!method || method.toLowerCase() === axiosConfig.method) && (url instanceof RegExp ? url.test(`${axiosConfig.url}`) : `${axiosConfig.url}`.includes(url)));
@@ -39,4 +38,6 @@ export default function mockAxios(mockDatas: MockConfig[], mockOptions?: MockOpt
     await timeout(mockConfig.timeout);
     return (mockConfig.adapter || mockAdapter)(axiosConfig, mockConfig);
   };
-}
+};
+export default mockAxios;
+export const defineConfig = (mockDatas: MockConfig[]) => mockDatas;
