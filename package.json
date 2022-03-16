@@ -18,9 +18,8 @@
     "release": "standard-version"
   },
   "devDependencies": {
-    "typescript": "^4.6.2",
     "vite": "^2.8.6",
-    "axios": "^0.26.1",
+    "typescript": "^4.6.2",
     "eslint": "^8.11.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-config-airbnb-typescript": "^16.1.2",
@@ -32,7 +31,8 @@
     "husky": "^7.0.4",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
-    "lint-staged": "^12.3.6"
+    "lint-staged": "^12.3.6",
+    "standard-version": "^9.3.2"
   },
   "author": "陈锴",
   "license": "MIT",
@@ -48,7 +48,9 @@
     "src/*",
     "dist/*"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.26.1"
+  },
   "engines": {
     "node": ">=16"
   },
