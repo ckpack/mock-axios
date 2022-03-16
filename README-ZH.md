@@ -6,6 +6,6 @@
   <a href="/README.md">ENGLISH</a>
 </h4>
 
-Mock axios requests for testing and development.
+模拟 axios 请求用于测试和开发。
 
-## API
+## 文档

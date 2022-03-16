@@ -15,7 +15,7 @@
     "build": "vite build && tsc --emitDeclarationOnly",
     "lint": "eslint . --ext .js,.ts --fix",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "release": "vite build"
+    "release": "standard-version"
   },
   "devDependencies": {
     "typescript": "^4.6.2",
