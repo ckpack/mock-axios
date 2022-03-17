@@ -15,6 +15,7 @@ module.exports = {
     'airbnb-typescript',
   ],
   rules: {
+    'import/no-extraneous-dependencies': 0,
     'react/jsx-filename-extension': 0,
   },
 };

@@ -23,9 +23,10 @@ Intercept `Axios` requests and return `Mock` data for testing and development.
 + `mockOptions`
   + `isUseDefaultAdapter`: `Boolean`, defaults to `true`, if enabled, requests that are not intercepted will be sent in the default mode of `axios`
   + `isEffect`: `Boolean`, default is `true`, with this parameter you can enable `mockAxios` in test environment and disable `mockAxios` in production environment
+  + `isLog`: `Boolean`, the default is `true`, whether to print the request log of `mockAxios`
 
 ```js
-import mockAxios from '@ckpack/mock-axios';
+import { mockAxios } from '@ckpack/mock-axios';
 
 mockAxios([{
   url: 'https://test.com/v1/user/1',
@@ -36,7 +37,6 @@ mockAxios([{
     }, 
   },
 }], {
-  isUseDefaultAdapter: true,
   isEffect: process.env.NODE_ENV === 'development',
 });
 ```
@@ -66,15 +66,24 @@ const mockDatas = defineConfig([
 ## 例子
 
 ```ts
-import mockAxios from '@ckpack/mock-axios';
+import { mockAxios } from '@ckpack/mock-axios';
 
 mockAxios([{
-  url: 'https://test.com/v1/user/1',
+  method: 'GET',
+  url: /https:\/\/test.com\/v1\/user\/\d+/,
   response: { 
-    data: { 
+    data: [{ 
       id: 1,
       name: 'admin',
-    }, 
+    }], 
+  },
+}, {
+  method: 'POST',
+  url: 'https://test.com/v1/user/create',
+  adapter: (axiosConfig) => {
+    return {
+      data: axiosConfig.data,
+    };
   },
 }]);
 ```
@@ -85,6 +94,17 @@ in other files
 import axios from 'axios';
 import mockAxios from '@ckpack/mock-axios';
 
-const result = await axios.get('https://test.com/v1/user/1');
-// result 等于 { data: { id: 1, name: 'admin' } }
+await axios.get('https://test.com/v1/user/1');
+// return { data: [{ id: 1, name: 'admin' }] }
+
+await axios.post('https://test.com/v1/user/create', {
+  id: 1,
+  name: 'admin',
+});
+// return { data: { id: 1, name: 'admin' } }
+await axios.post('https://test.com/v1/user/create', {
+  id: 2,
+  name: 'test',
+});
+// return { data: { id: 2, name: 'test' } }
 ```

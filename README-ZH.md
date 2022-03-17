@@ -23,9 +23,10 @@
 + `mockOptions`
   + `isUseDefaultAdapter`: `Boolean`, 默认为 `true`, 如果开启，没有拦截到的请求会以`axios`默认方式发送请求
   + `isEffect`: `Boolean`, 默认为 `true`, 通过该参数你可以在测试环境中打开`mockAxios`，在生产环境中关闭`mockAxios`
+  + `isLog`: `Boolean`, 默认为 `true`, 是否打印`mockAxios`的请求日志
 
 ```js
-import mockAxios from '@ckpack/mock-axios';
+import { mockAxios } from '@ckpack/mock-axios';
 
 mockAxios([{
   url: 'https://test.com/v1/user/1',
@@ -36,7 +37,6 @@ mockAxios([{
     }, 
   },
 }], {
-  isUseDefaultAdapter: true,
   isEffect: process.env.NODE_ENV === 'development',
 });
 ```
@@ -66,15 +66,24 @@ const mockDatas = defineConfig([
 ## 例子
 
 ```ts
-import mockAxios from '@ckpack/mock-axios';
+import { mockAxios } from '@ckpack/mock-axios';
 
 mockAxios([{
-  url: 'https://test.com/v1/user/1',
+  method: 'GET',
+  url: /https:\/\/test.com\/v1\/user\/\d+/,
   response: { 
-    data: { 
+    data: [{ 
       id: 1,
       name: 'admin',
-    }, 
+    }], 
+  },
+}, {
+  method: 'POST',
+  url: 'https://test.com/v1/user/create',
+  adapter: (axiosConfig) => {
+    return {
+      data: axiosConfig.data,
+    };
   },
 }]);
 ```
@@ -85,6 +94,17 @@ mockAxios([{
 import axios from 'axios';
 import mockAxios from '@ckpack/mock-axios';
 
-const result = await axios.get('https://test.com/v1/user/1');
-// result 等于 { data: { id: 1, name: 'admin' } }
+await axios.get('https://test.com/v1/user/1');
+// 返回 { data: [{ id: 1, name: 'admin' }] }
+
+await axios.post('https://test.com/v1/user/create', {
+  id: 1,
+  name: 'admin',
+});
+// 返回 { data: { id: 1, name: 'admin' } }
+await axios.post('https://test.com/v1/user/create', {
+  id: 2,
+  name: 'test',
+});
+// 返回 { data: { id: 2, name: 'test' } }
 ```

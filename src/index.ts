@@ -10,8 +10,9 @@ export interface MockConfig {
 }
 
 export interface MockOptions {
-  isUseDefaultAdapter: Boolean,
-  isEffect: Boolean,
+  isUseDefaultAdapter?: Boolean,
+  isEffect?: Boolean,
+  isLog?: Boolean,
 }
 
 const defaultAdapter = axios.defaults.adapter;
@@ -25,19 +26,19 @@ const timeout = async (time = 300) => {
   });
 };
 
-const mockAxios = (mockDatas: MockConfig[], mockOptions?: MockOptions) => {
-  const { isUseDefaultAdapter = true, isEffect = true } = mockOptions || {};
+export const mockAxios = (mockDatas: MockConfig[], mockOptions?: MockOptions) => {
+  const { isUseDefaultAdapter = true, isEffect = true, isLog = true } = mockOptions || {};
   axios.defaults.adapter = async (axiosConfig) => {
     if (!isEffect && defaultAdapter) return defaultAdapter(axiosConfig);
     const mockConfig = mockDatas.find((mockData) => {
       const { url, method } = mockData;
       return ((!method || method.toLowerCase() === axiosConfig.method) && (url instanceof RegExp ? url.test(`${axiosConfig.url}`) : `${axiosConfig.url}`.includes(url)));
     });
+    if (isLog) console.log('axiosConfig:', axiosConfig,  '\nmockConfig:', mockConfig);
     if (!mockConfig) return (isUseDefaultAdapter && defaultAdapter) ? defaultAdapter(axiosConfig) : {};
 
     await timeout(mockConfig.timeout);
     return (mockConfig.adapter || mockAdapter)(axiosConfig, mockConfig);
   };
 };
-export default mockAxios;
 export const defineConfig = (mockDatas: MockConfig[]) => mockDatas;
