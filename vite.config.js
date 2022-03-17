@@ -10,6 +10,10 @@ const outDir = 'dist';
 
 const external = Object.keys({ ...dependencies, ...devDependencies });
 export default defineConfig({
+  test: {
+    watch: false,
+    include: '__test__/*.test.ts',
+  },
   plugins: [dtsPlugin({
     // skipDiagnostics: false,
     // logDiagnostics: true,
