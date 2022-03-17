@@ -66,6 +66,7 @@ const mockDatas = defineConfig([
 ## 例子
 
 ```ts
+// mockAxios.js
 import { mockAxios } from '@ckpack/mock-axios';
 
 mockAxios([{
@@ -92,7 +93,7 @@ mockAxios([{
 
 ```ts
 import axios from 'axios';
-import mockAxios from '@ckpack/mock-axios';
+import './mockAxios.js';
 
 await axios.get('https://test.com/v1/user/1');
 // 返回 { data: [{ id: 1, name: 'admin' }] }
