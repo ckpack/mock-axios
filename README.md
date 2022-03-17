@@ -8,7 +8,7 @@
 
 Intercept `Axios` requests and return `Mock` data for testing and development.
 
-## 文档
+## API
 
 ### mockAxios
 
@@ -63,7 +63,7 @@ const mockDatas = defineConfig([
 ]);
 ```
 
-## 例子
+## Example
 
 ```ts
 // mockAxios.js
