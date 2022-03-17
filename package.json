@@ -1,6 +1,6 @@
 {
   "name": "@ckpack/mock-axios",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Mock axios requests for testing and development",
   "type": "module",
   "main": "dist/mock-axios.es.js",
