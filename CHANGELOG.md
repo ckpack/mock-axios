@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/ckpack/mock-axios/compare/v0.0.2...v0.0.3) (2022-03-17)
+
+
+### Features
+
+* add logger ([19e9452](https://github.com/ckpack/mock-axios/commit/19e945237cabb218fb1ce4427d1b8f36eadf603a))
+
 ### [0.0.2](https://github.com/ckpack/mock-axios/compare/v0.0.1...v0.0.2) (2022-03-16)
 
 
