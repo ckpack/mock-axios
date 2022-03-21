@@ -24,6 +24,7 @@
   + `isUseDefaultAdapter`: `Boolean`, 默认为 `true`, 如果开启，没有拦截到的请求会以`axios`默认方式发送请求
   + `isEffect`: `Boolean`, 默认为 `true`, 通过该参数你可以在测试环境中打开`mockAxios`，在生产环境中关闭`mockAxios`
   + `isLog`: `Boolean`, 默认为 `true`, 是否打印`mockAxios`的请求日志
+  + `logger`: `Function`, 替换默认的日志函数
 
 ```js
 import { mockAxios } from '@ckpack/mock-axios';

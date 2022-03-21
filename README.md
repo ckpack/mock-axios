@@ -24,6 +24,7 @@ Intercept `Axios` requests and return `Mock` data for testing and development.
   + `isUseDefaultAdapter`: `Boolean`, defaults to `true`, if enabled, requests that are not intercepted will be sent in the default mode of `axios`
   + `isEffect`: `Boolean`, default is `true`, with this parameter you can enable `mockAxios` in test environment and disable `mockAxios` in production environment
   + `isLog`: `Boolean`, the default is `true`, whether to print the request log of `mockAxios`
+  + `logger`: `Function`, replace the default log function
 
 ```js
 import { mockAxios } from '@ckpack/mock-axios';

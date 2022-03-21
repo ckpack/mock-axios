@@ -8,15 +8,15 @@ specifiers:
   axios: ^0.26.1
   c8: ^7.11.0
   eslint: ^8.11.0
-  eslint-config-airbnb-typescript: ^16.1.2
+  eslint-config-airbnb-typescript: ^16.1.4
   eslint-plugin-import: ^2.25.4
   husky: ^7.0.4
-  lint-staged: ^12.3.6
+  lint-staged: ^12.3.7
   standard-version: ^9.3.2
   typescript: ^4.6.2
   vite: ^2.8.6
   vite-plugin-dts: ^0.9.10
-  vitest: ^0.7.0
+  vitest: ^0.7.6
 
 devDependencies:
   '@commitlint/cli': 16.2.3
@@ -26,15 +26,15 @@ devDependencies:
   axios: 0.26.1
   c8: 7.11.0
   eslint: 8.11.0
-  eslint-config-airbnb-typescript: 16.1.2_2a7bc34057f0c9a512ab84f1f1b77a56
+  eslint-config-airbnb-typescript: 16.1.4_2a7bc34057f0c9a512ab84f1f1b77a56
   eslint-plugin-import: 2.25.4_eslint@8.11.0
   husky: 7.0.4
-  lint-staged: 12.3.6
+  lint-staged: 12.3.7
   standard-version: 9.3.2
   typescript: 4.6.2
   vite: 2.8.6
   vite-plugin-dts: registry.npmmirror.com/vite-plugin-dts/0.9.10_vite@2.8.6
-  vitest: 0.7.0_c8@7.11.0
+  vitest: 0.7.6_c8@7.11.0
 
 packages:
 
@@ -1434,8 +1434,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-config-airbnb-typescript/16.1.2_2a7bc34057f0c9a512ab84f1f1b77a56:
-    resolution: {integrity: sha512-IZnWyJXCYGpWvEmGQ9eyxQUnuH/NTmw4E6pI+NNGNxu4weWclZstaDGjzD+lrld81sP4BKshaigLbqFWBB9QPg==}
+  /eslint-config-airbnb-typescript/16.1.4_2a7bc34057f0c9a512ab84f1f1b77a56:
+    resolution: {integrity: sha512-dfm2cEaYXh4mCYd+RyJO8+PQfd5/zp8WwrCeRznly5qD9W5tal3KTjgdInYWuEAdwWnNJxWcmQ/HFiA4bfkM1g==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.0.0
       '@typescript-eslint/parser': ^5.0.0
@@ -2228,8 +2228,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged/12.3.6:
-    resolution: {integrity: sha512-tVNyl/HsAnplKh4oaoRNzyZLm0PE/6VaBUXvd/gA9zhYCC/+ivZwiwpoT6jOxcLzuIOjP19wW+mfOi7/Bw4c1A==}
+  /lint-staged/12.3.7:
+    resolution: {integrity: sha512-/S4D726e2GIsDVWIk1XGvheCaDm1SJRQp8efamZFWJxQMVEbOwSysp7xb49Oo73KYCdy97mIWinhlxcoNqIfIQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -3389,8 +3389,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.7.0_c8@7.11.0:
-    resolution: {integrity: sha512-qLq4VEWJRyhscfzjhlNA+mrCrBQ2Vh7M9ew90yudOfoNUT0ilmFdRriRMN8m8BkKw/7txoTvT1X3oQB7B4Pk3A==}
+  /vitest/0.7.6_c8@7.11.0:
+    resolution: {integrity: sha512-fqk0cn0I2BUpzwLfeZ725JeXJ7WGwDtVcVBksQ6SdyjrBi6aex8t3w70TWgyLOXgylS7FJ8C9DRap4MMgpkqYw==}
     engines: {node: '>=14.14.0'}
     hasBin: true
     peerDependencies:
